@@ -6,16 +6,32 @@
 /*   By: oemelyan <oemelyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 18:19:52 by oemelyan          #+#    #+#             */
-/*   Updated: 2024/02/06 20:53:11 by oemelyan         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:03:21 by oemelyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+t_stack	*get_min_node(t_stack **stack)
+{
+	t_stack	*current;
+	t_stack	*minimum;
+
+	current = (*stack);
+	minimum = (*stack);
+	while (current != NULL)
+	{
+		if (current->number < minimum->number)
+			minimum = current;
+		current = current->next;
+	}
+	return (minimum);
+}
+
 t_stack	*get_max_node(t_stack **stack)
 {
-	t_stack		*current;
-	t_stack		*maximum;
+	t_stack	*current;
+	t_stack	*maximum;
 
 	current = (*stack);
 	maximum = (*stack);
@@ -28,11 +44,11 @@ t_stack	*get_max_node(t_stack **stack)
 	return (maximum);
 }
 
-void part_2_sort(t_stack **stack_a, t_stack **stack_b)
+void	part_2_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack		*max;
-	int			go_down;
-	int			go_up;
+	t_stack	*max;
+	int		go_down;
+	int		go_up;
 
 	while (get_stack_size(stack_b) != 0)
 	{
@@ -42,20 +58,19 @@ void part_2_sort(t_stack **stack_a, t_stack **stack_b)
 		go_up = count_up(stack_b, max);
 		printf("to move the node up we need %d moves\n", go_up);
 		if (go_down < go_up)
-			move_node_down(stack_b, go_down);
+			move_node_down(stack_b, go_down, 'b');
 		else
-			move_node_up(stack_b, go_up);
-		push_stack(stack_a, stack_b);
+			move_node_up(stack_b, go_up, 'b');
+		push_stack(stack_a, stack_b, 'a');
 	}
 }
 
 void	sort_em_all(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack		*current;
-	int			index;
-	int			range;
+	t_stack	*current;
+	int		index;
+	int		range;
 
-	printf("big sort starts here\n");
 	current = (*stack_a);
 	index = 0;
 	range = ((int)square_root(get_stack_size(stack_a)) * 14) / 10;
@@ -63,25 +78,18 @@ void	sort_em_all(t_stack **stack_a, t_stack **stack_b)
 	{
 		if (current->target_index <= index)
 		{
-
-			push_stack(stack_b, stack_a);
-			rotate_stack(stack_b);
+			push_stack(stack_b, stack_a, 'b');
+			rotate_stack(stack_b, 'b');
 			index++;
 		}
 		else if (current->target_index <= index + range)
 		{
-
-			push_stack(stack_b, stack_a);
+			push_stack(stack_b, stack_a, 'b');
 			index++;
 		}
 		else
-			rotate_stack(stack_a);
+			rotate_stack(stack_a, 'a');
 		current = (*stack_a);
 	}
-	printf("stack a after k_sort\n");
-	print_stack(stack_a); //delete
-
-	printf("stack b after k_sort\n");
-	print_stack(stack_b); //delete
 	part_2_sort(stack_a, stack_b);
 }

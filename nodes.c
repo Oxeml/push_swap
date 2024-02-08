@@ -6,7 +6,7 @@
 /*   By: oemelyan <oemelyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 19:42:38 by oemelyan          #+#    #+#             */
-/*   Updated: 2024/02/04 18:58:13 by oemelyan         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:23:55 by oemelyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	create_stack(int count, t_stack **node)
 {
 	if (count == 0)
 		return (0);
-	if (malloc2(sizeof(t_stack), (void **) node))
+	if (malloc2(sizeof(t_stack), (void **)node))
 		return (1);
 	(*node)->number = 0;
 	(*node)->target_index = 0;
@@ -53,7 +53,7 @@ void	free_stack(t_stack *node)
 	while (node != NULL)
 	{
 		next = node->next;
-		free (node);
+		free(node);
 		node = next;
 	}
 }
@@ -63,14 +63,4 @@ void	free_stacks(t_stack **stack_a, t_stack **stack_b)
 {
 	free_stack(*stack_a);
 	free_stack(*stack_b);
-}
-
-void print_stack (t_stack **stack)
-{
-	t_stack *current = *stack;
-	while (current != NULL)
-	{
-		printf("number: %d, target_i: %d\n", current -> number, current -> target_index);
-		current = current -> next;
-	}
 }
