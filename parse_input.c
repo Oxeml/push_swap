@@ -6,7 +6,7 @@
 /*   By: oemelyan <oemelyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:46:36 by oemelyan          #+#    #+#             */
-/*   Updated: 2024/02/08 21:07:02 by oemelyan         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:57:34 by oemelyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,13 @@ int	only_integers(char **arr_str, int *array)
 	return (1);
 }
 
-int	*parse_it(int ac, char **av, int nbrs, int *array)
+void	parse_it(int ac, char **av, int *array)
 {
 	int		j;
 	int		i;
 	char	**arr_str;
 	int		k;
 
-	array = malloc((nbrs) * sizeof(int));
 	j = 1;
 	k = 0;
 	while (j < ac)
@@ -126,5 +125,4 @@ int	*parse_it(int ac, char **av, int nbrs, int *array)
 		free(arr_str);
 		j++;
 	}
-	return (array);
 }

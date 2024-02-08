@@ -6,7 +6,7 @@
 /*   By: oemelyan <oemelyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:28:42 by oemelyan          #+#    #+#             */
-/*   Updated: 2024/02/08 22:20:23 by oemelyan         ###   ########.fr       */
+/*   Updated: 2024/02/08 23:17:56 by oemelyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 		write(1, "memory allocation failed\n", 25);
 		return (1);
 	}
-	arr = parse_it(argc, argv, nbrs, arr);
+	parse_it(argc, argv, arr);
 	is_sorted(arr, indexes, nbrs);
 	get_indexes(nbrs, arr, indexes);
 	if (create_stack(nbrs, &stack_a))

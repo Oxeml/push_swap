@@ -6,7 +6,7 @@
 /*   By: oemelyan <oemelyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 18:19:52 by oemelyan          #+#    #+#             */
-/*   Updated: 2024/02/08 22:03:21 by oemelyan         ###   ########.fr       */
+/*   Updated: 2024/02/08 23:01:49 by oemelyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,7 @@ void	part_2_sort(t_stack **stack_a, t_stack **stack_b)
 	{
 		max = get_max_node(stack_b);
 		go_down = count_down(stack_b, max);
-		printf("to move the node down we need %d moves\n", go_down);
 		go_up = count_up(stack_b, max);
-		printf("to move the node up we need %d moves\n", go_up);
 		if (go_down < go_up)
 			move_node_down(stack_b, go_down, 'b');
 		else

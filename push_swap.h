@@ -6,7 +6,7 @@
 /*   By: oemelyan <oemelyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 19:26:43 by oemelyan          #+#    #+#             */
-/*   Updated: 2024/02/08 22:23:44 by oemelyan         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:56:39 by oemelyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_stack
 //**organizing space**
 int					count_nbrs(int ac, char **av);
 int					count_words(char const *str, char delimiter);
-int					*parse_it(int ac, char **av, int nbrs, int *array);
+void				parse_it(int ac, char **av, int *array);
 int					duplicate_check(int nbr, int *array, char **arr_str);
 char				**ft_split(char const *s, char c);
 void				get_indexes(int argc, int *arr, int *indexes);
